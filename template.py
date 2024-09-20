@@ -304,9 +304,9 @@ def footer(topic, author_name, hotline, email, education_unit):
         <div class="footer">
             <p class="topic">{topic}</p>
             <p><b>Author:</b> {author_name}</p>
-            <p><b>Hotline:</b> <a href="tel:{hotline}">{hotline}</a></p>
+            <p><b>Zalo:</b> <a href="tel:{hotline}">{hotline}</a></p>
             <p><b>Email:</b> <a href="mailto:{email}">{email}</a></p>
-            <p><b>Educational Unit:</b> {education_unit}</p>
+            <p><b>Educational:</b> {education_unit}</p>
         </div>
     """, unsafe_allow_html=True)
 
