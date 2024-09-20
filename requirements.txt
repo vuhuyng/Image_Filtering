@@ -1,0 +1,5 @@
+streamlit==1.25.0  # Phiên bản Streamlit mới nhất
+pillow==10.0.1  # Để làm việc với hình ảnh thông qua PIL
+opencv-python==4.8.0.76  # Thư viện OpenCV để xử lý ảnh
+numpy==1.23.5  # Xử lý dữ liệu số học và mảng
+matplotlib==3.7.2  # Để vẽ biểu đồ và hình ảnh
