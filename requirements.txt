@@ -1,5 +1,4 @@
-streamlit==1.25.0  # Hoặc phiên bản mới nhất
-opencv-python-headless  # Thay vì dùng opencv-python, hãy sử dụng headless để tránh xung đột với Streamlit Cloud
-numpy
-pillow
-matplotlib
+streamlit==1.14.0
+Pillow==9.0.1
+opencv-python==4.5.5.64
+numpy==1.21.0
