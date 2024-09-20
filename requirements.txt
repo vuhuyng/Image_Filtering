@@ -1,5 +1,5 @@
-pip install streamlit
-pip install pillow
-pip install opencv-python
-pip install numpy
-pip install matplotlib
+streamlit==1.23.1  # Một phiên bản Streamlit ổn định
+pillow==10.0.1  # Phiên bản Pillow mới nhất
+opencv-python-headless==4.8.0.76  # Phiên bản headless của OpenCV
+numpy==1.23.5  # Phiên bản ổn định của numpy
+matplotlib==3.7.2  # Phiên bản matplotlib ổn định
