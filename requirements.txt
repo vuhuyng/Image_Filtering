@@ -3,3 +3,4 @@ Pillow==8.4.0
 opencv-python-headless==4.5.5.64
 numpy==1.21.2
 matplotlib==3.4.3
+altair==4.2.2
