@@ -293,6 +293,13 @@ def footer(topic, author_name, hotline, email, education_unit):
             margin-bottom: 20px;
         }}
 
+        .footer p.copyright {{
+            font-size: 14px;
+            color: #bdc3c7;
+            margin-top: 20px;
+            font-style: italic;
+        }}
+
         /* Footer floating animation */
         @keyframes floatFooter {{
             0% {{ transform: translateY(0px); }}
@@ -307,6 +314,7 @@ def footer(topic, author_name, hotline, email, education_unit):
             <p><b>Zalo:</b> <a href="tel:{hotline}">{hotline}</a></p>
             <p><b>Email:</b> <a href="mailto:{email}">{email}</a></p>
             <p><b>Educational:</b> {education_unit}</p>
+            <p class="copyright">© September 2024 - All rights reserved. No copying allowed. Developed by Nguyen Vu Huy.</p>
         </div>
     """, unsafe_allow_html=True)
 
