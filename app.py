@@ -151,7 +151,7 @@ if uploaded_file_mf is not None:
             st.image(image_mf, caption="Ảnh gốc", use_column_width=True)
 
         with col2:
-            st.empty()  # Placeholder for icon
+            icon()  # Placeholder for icon
 
         with col3:
             st.image(median_filtered_img_rgb,
