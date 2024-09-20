@@ -1,4 +1,5 @@
 streamlit==1.14.0
-Pillow==8.4.0  # Thử phiên bản này
-opencv-python==4.5.5.64
-numpy==1.21.2   # Cập nhật numpy
+Pillow==8.4.0
+opencv-python-headless==4.5.5.64
+numpy==1.21.2
+matplotlib==3.4.3
