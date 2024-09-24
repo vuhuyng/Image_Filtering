@@ -27,14 +27,12 @@ if uploaded_file_cb is not None:
         img_np_cb = np.array(image_cb)
         img_cv_cb = cv2.cvtColor(img_np_cb, cv2.COLOR_RGB2BGR)
 
-        # Thêm sliders để điều chỉnh clipLimit và tileGridSize
-        clip_limit = st.slider("Chọn clipLimit cho CLAHE",
-                               min_value=1.0, max_value=100.0, value=3.0, step=0.1)
-        grid_size = st.slider("Chọn kích thước lưới cho CLAHE",
-                              min_value=1, max_value=100, value=8, step=1)
+        # Thêm slider để điều chỉnh phần trăm cắt cho Color Balance
+        percent = st.slider("Chọn phần trăm cắt cho Color Balance",
+                            min_value=0, max_value=10, value=1, step=1)
 
-        # Áp dụng hàm color_balance với các tham số từ sliders
-        balanced_img = color_balance(img_cv_cb, clip_limit, grid_size)
+        # Áp dụng hàm color_balance với phần trăm từ slider
+        balanced_img = color_balance(img_cv_cb, percent)
 
         # Chuyển đổi ảnh OpenCV (BGR) sang định dạng RGB để hiển thị trên Streamlit
         balanced_img_rgb = cv2.cvtColor(balanced_img, cv2.COLOR_BGR2RGB)
@@ -45,19 +43,20 @@ if uploaded_file_cb is not None:
             st.image(image_cb, caption="Ảnh gốc", use_column_width=True)
 
         with col2:
+            # Bạn có thể thay đổi thành biểu tượng tùy ý hoặc bỏ nếu không cần.
             icon()
 
         with col3:
             st.image(
                 balanced_img_rgb, caption="Ảnh sau khi áp dụng Color Balance", use_column_width=True)
 
-            # Convert the filtered image to PNG format for download
+            # Chuyển đổi ảnh sang định dạng PNG để tải về
             balanced_img_pil = Image.fromarray(balanced_img_rgb)
             buffered = BytesIO()
             balanced_img_pil.save(buffered, format="PNG")
             img_download = buffered.getvalue()
 
-            # Add download button
+            # Thêm nút tải ảnh đã áp dụng Color Balance
             st.download_button(
                 label="Tải ảnh đã áp dụng Color Balance",
                 data=img_download,
