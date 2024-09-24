@@ -6,19 +6,29 @@ import matplotlib.pyplot as plt
 # ===================================Function 1=============================================
 
 
-def color_balance(img, clip_limit, grid_size):
-    # Chuyển đổi ảnh sang không gian màu LAB
-    img_lab = cv2.cvtColor(img, cv2.COLOR_BGR2LAB)
-    l_channel, a_channel, b_channel = cv2.split(img_lab)
+def color_balance(img, percent=1):
+    # Tính toán giá trị cắt từ phần trăm đầu và cuối của mỗi kênh màu
+    assert img.shape[2] == 3, "Ảnh phải có 3 kênh (BGR)"
+    out_channels = []
+    cumstops = [percent, 100-percent]
 
-    # Áp dụng CLAHE để cân bằng kênh L (độ sáng) với các tham số từ slider
-    clahe = cv2.createCLAHE(clipLimit=clip_limit,
-                            tileGridSize=(grid_size, grid_size))
-    cl = clahe.apply(l_channel)
+    # Lặp qua các kênh màu (B, G, R)
+    for i in range(3):
+        # Lấy kênh màu hiện tại
+        channel = img[:, :, i]
 
-    # Kết hợp lại các kênh và chuyển đổi lại sang không gian BGR
-    limg = cv2.merge((cl, a_channel, b_channel))
-    balanced_img = cv2.cvtColor(limg, cv2.COLOR_LAB2BGR)
+        # Tính giá trị phần trăm cắt (cut-off values)
+        low_val, high_val = np.percentile(channel, cumstops)
+
+        # Cắt giá trị và co giãn lại để nằm trong khoảng 0-255
+        channel = np.clip(channel, low_val, high_val)
+        channel = np.uint8(255 * (channel - low_val) / (high_val - low_val))
+
+        # Thêm kênh đã cân bằng vào danh sách
+        out_channels.append(channel)
+
+    # Gộp lại các kênh B, G, R đã điều chỉnh
+    balanced_img = cv2.merge(out_channels)
 
     return balanced_img
 
